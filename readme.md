@@ -1,7 +1,8 @@
 FubuMVC Swagger
 ===============
 
-This project enables your content negotiation enabled [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application to emit [Swagger specification](http://swagger.wordnik.com/spec)
+This project allows your content negotiation enabled [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application
+to emit [Swagger specification](http://swagger.wordnik.com/spec)
 
 ### Build ###
 
@@ -47,7 +48,7 @@ graph.Behaviors
  .Each(x => x.MakeAsymmetricJson());
 ```
 
-This example will force the result of these actions to be JSON. Note: This configuration is working around a bug in FubuMVC where normal browser usage will return XML for Conneg enabled endpoints. :broken_heart: 
+This example will force the result of these actions to be JSON. Note: This configuration is working around a bug in FubuMVC where normal browser usage will return XML for Conneg enabled endpoints. :( 
 
 ### How do I add more detail to my APIs
 
