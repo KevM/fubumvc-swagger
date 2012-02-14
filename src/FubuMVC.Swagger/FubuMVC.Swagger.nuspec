@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Kevin Miller</authors>
+    <owners>Kevin Miller</owners>
+    <licenseUrl>https://github.com/KevM/fubumvc-swagger/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/KevM/fubumvc-swagger</projectUrl>
+    <iconUrl>https://github.com/DarthFubuMVC/fubu-collateral/raw/master/Icons/FubuMvc_256.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>FubuMVC Swagger API Documentation</tags>
+  </metadata>
+</package>

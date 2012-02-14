@@ -7,6 +7,8 @@ PROJECT_NAME = "FubuSwagger"
 SLN_PATH = "src/#{PROJECT_NAME}.sln"
 SLN_FILES = [SLN_PATH]
 
+NUGET_EXE = File.absolute_path("src/.nuget/nuget.exe")
+
 puts "Loading scripts from build support directory..."
 buildsupportfiles = Dir["#{File.dirname(__FILE__)}/buildsupport/*.rb"]
 buildsupportfiles.each { |ext| 
