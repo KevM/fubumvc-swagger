@@ -3,9 +3,14 @@ FubuMVC Swagger
 
 This project enables your content negotiation enabled [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application to emit [Swagger specification](http://swagger.wordnik.com/spec)
 
-### Build
+### Build ###
 
-```rake
+To build just run rake grabbing the albacore gem if you don't already have it. 
+
+```rb
+gem install albacore
+rake
+```
 
 I am working on making a Nuget available. 
 
@@ -15,13 +20,15 @@ Add a reference to this project.
 
 Add the following to your FubuRegistry:
 
-```ApplyConvention<SwaggerConvention>();
+```cs
+ApplyConvention<SwaggerConvention>();
+```
 
 ### What does this convention do?
 
 Two routes will be added to your application:
 
-```
+```html
 api/resources.json
 api/{GroupKey}.json
 ```
