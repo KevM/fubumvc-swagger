@@ -4,7 +4,13 @@ FubuMVC Swagger
 This project allows your content negotiation enabled [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application
 to emit [Swagger specification](http://swagger.wordnik.com/spec)
 
-### Build ###
+### How do I get it? ###
+
+We have a [nuget package](https://nuget.org/packages/FubuMVC.Swagger) available.
+
+```PM> Install-Package FubuMVC.Swagger```
+
+#### Building Swagger
 
 To build just run rake grabbing the albacore gem if you don't already have it. 
 
@@ -12,8 +18,6 @@ To build just run rake grabbing the albacore gem if you don't already have it.
 gem install albacore
 rake
 ```
-
-I am working on making a Nuget available. 
 
 ### Integration
 
@@ -33,6 +37,10 @@ Two routes will be added to your application:
 api/resources.json
 api/{GroupKey}.json
 ```
+
+The first is for resource discovery which let's Swagger-UI know where all of your resource APIs are defined in JSON. 
+The second is for details of each API group present in your app. Currently API routes are assumed to be under /api. 
+Hopefully this limitation will go away.
 
 Pointing a Swagger UI web site at ```http://localhost:port/api/``` should render pretty API documentation for all content negotiation enabled actions in your web applicaiton.
 
