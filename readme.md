@@ -21,13 +21,16 @@ rake
 
 ### Integration
 
-Add a reference to this project. 
+Add a reference to this project. Why not [use nuget](https://nuget.org/packages/FubuMVC.Swagger)!
 
 Add the following to your FubuRegistry:
 
 ```cs
 ApplyConvention<SwaggerConvention>();
+Services(s=> s.AddService<IActionGrouper, APIRouteGrouper>());
 ```
+
+This should all be simplified when I find the time to figure out Fubu Bottles. 
 
 ### What does this convention do?
 
