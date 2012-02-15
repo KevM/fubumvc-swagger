@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{30FE57E5-2BEE-4B1A-99E8-3420394551E2}"
 	ProjectSection(SolutionItems) = preProject
 		..\rakefile.rb = ..\rakefile.rb
+		..\readme.md = ..\readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4C500A39-37B3-4223-96A5-5E286859F0D5}"

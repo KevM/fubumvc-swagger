@@ -13,7 +13,7 @@ namespace FubuMVC.Swagger
             graph.AddActionFor("api/resources.json", typeof(ResourceDiscoveryAction)).MakeAsymmetricJson();
 
             //add resource action and force it to return JSON
-            graph.AddActionFor("api/{GroupKey}.json", typeof(ResourceDiscoveryAPIAction)).MakeAsymmetricJson();
+            graph.AddActionFor("api/{GroupKey}.json", typeof(ResourceAction)).MakeAsymmetricJson();
         }
     }
 }

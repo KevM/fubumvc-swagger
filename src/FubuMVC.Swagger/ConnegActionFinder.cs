@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using FubuCore;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Resources.Conneg;
 
 namespace FubuMVC.Swagger
 {
-    public class ApiFinder
+    public class ConnegActionFinder
     {
         private readonly BehaviorGraph _graph;
-        
-        public ApiFinder(BehaviorGraph graph)
+        private readonly IActionGrouper _actionGrouper;
+
+        public ConnegActionFinder(BehaviorGraph graph, IActionGrouper actionGrouper)
         {
             _graph = graph;
+            _actionGrouper = actionGrouper;
         }
 
         public IEnumerable<ActionCall> Actions()
@@ -23,21 +23,11 @@ namespace FubuMVC.Swagger
             return actions;
         }
 
+        //TODO - This should get abstracted out. Everyone will have a different take on their URL structure
+        //this method groups actions by the second segment of the URL. 
         public IEnumerable<IGrouping<string, ActionCall>> ActionsByGroup()
         {
-            var partGroupExpression = new Regex(@"^/?api/(?<group>[a-zA-Z0-9_\-\.\+]+)/?");
-
-            //TODO might want to cache the intermediate result
-
-            var groups = Actions()
-                .GroupBy(a =>
-                             {
-                                 var pattern = a.ParentChain().Route.Pattern;
-                                 var match = partGroupExpression.Match(pattern);
-                                 return match.Success ? match.Groups["group"].Value : null;
-                             });
-            
-            return groups.Where(g=>g.Key.IsNotEmpty()).ToArray();
+            return _actionGrouper.Group(Actions());
         }
 
         public IEnumerable<ActionCall> ActionsForGroup(string name)
