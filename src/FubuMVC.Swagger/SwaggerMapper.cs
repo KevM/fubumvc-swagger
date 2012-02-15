@@ -26,7 +26,9 @@ namespace FubuMVC.Swagger
             var outputType = call.OutputType();
             var route = call.ParentChain().Route;
 
-            return route.AllowedHttpMethods.Select(verb =>
+            var verbs = getRouteVerbs(route);
+
+            return verbs.Select(verb =>
                                           {
                                               var summary = call.InputType().GetAttribute<DescriptionAttribute>(d => d.Description);
 
@@ -45,6 +47,20 @@ namespace FubuMVC.Swagger
                                                              //TODO get notes, nickname, summary from metadata?
                                                          };
                                           });
+        }
+
+        public static IEnumerable<string> getRouteVerbs(IRouteDefinition route)
+        {
+            var verbs = route.AllowedHttpMethods;
+            
+            //no constraints are presnt so we default to GET
+            //Better than emitting operations for all known HTTP verbs?
+            if (!verbs.Any())
+            {
+                verbs.Add("GET");
+            }
+
+            return verbs;
         }
 
         private IEnumerable<Parameter> createParameters(ActionCall call)

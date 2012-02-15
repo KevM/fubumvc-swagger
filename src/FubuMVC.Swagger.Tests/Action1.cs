@@ -27,8 +27,13 @@ namespace FubuMVC.Swagger.Tests
 
     public class Action1
     {
-        public void Execute(ActionRequest request)
+        public ActionResult Execute(ActionRequest request)
         {
+            return new ActionResult();
         }
+    }
+
+    public class ActionResult
+    {
     }
 }
