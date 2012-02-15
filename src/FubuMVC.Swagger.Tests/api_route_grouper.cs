@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
-using FubuMVC.Core.Resources.Conneg;
 using NUnit.Framework;
 
 namespace FubuMVC.Swagger.Tests
@@ -53,25 +52,18 @@ namespace FubuMVC.Swagger.Tests
         {
             var graph = new BehaviorGraph();
 
-            graph.AddActionFor("api/group1/{Id}", typeof (Action1));
-            graph.AddActionFor("api/group2/{Id}", typeof(Action1));
+            graph.AddActionFor("api/group1/{input}", typeof (Action1));
+            graph.AddActionFor("api/group2/{input}", typeof(Action1));
             graph.AddActionFor("api/group2/foo/", typeof(Action1));
             graph.AddActionFor("api/group3", typeof(Action1));
             graph.AddActionFor("api/group3/foobar", typeof(Action1));
-            graph.AddActionFor("api/group3/{star}", typeof(Action1));
+            graph.AddActionFor("api/group3/{input}", typeof(Action1));
             graph.AddActionFor("home", typeof(Action1));
             graph.AddActionFor("home/foo", typeof(Action1));
             graph.AddActionFor("home/foo/baz", typeof(Action1));
             graph.AddActionFor("bar", typeof(Action1));
 
             return graph.Actions();
-        }
-
-        public class Action1
-        {
-            public void Execute()
-            {
-            }
         }
     }
 }

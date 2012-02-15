@@ -22,49 +22,43 @@ namespace FubuMVC.Swagger
 
         public IEnumerable<Operation> GetSwaggerOperations(ActionCall call)
         {
-            var route = call.ParentChain().Route;
-            var httpMethods = route.AllowedHttpMethods;
-            
-            var parameters = getParameters(call);
+            var parameters = createParameters(call);
             var outputType = call.OutputType();
+            var route = call.ParentChain().Route;
 
-            
-            var operations = new List<Operation>();
-            foreach (var verb in httpMethods)
-            {
-                var summary = call.InputType().GetAttribute<DescriptionAttribute>(d => d.Description);
+            return route.AllowedHttpMethods.Select(verb =>
+                                          {
+                                              var summary = call.InputType().GetAttribute<DescriptionAttribute>(d => d.Description);
 
-                var operation = new Operation
-                                    {
-                                        parameters = parameters.ToArray(),
-                                        httpMethod = verb,
-                                        responseTypeInternal = outputType.FullName,
-                                        responseClass = outputType.Name,
-                                        nickname = call.InputType().Name,
-                                        summary = summary,
-                                        
-                                        //TODO not sure how we'd support error responses
-                                        errorResponses = new ErrorResponses[0],
-                                        
-                                        //TODO get notes, nickname, summary from metadata?
-                                    };
-                operations.Add(operation);
-            }
-            return operations;
+                                              return new Operation
+                                                         {
+                                                             parameters = parameters.ToArray(),
+                                                             httpMethod = verb,
+                                                             responseTypeInternal = outputType.FullName,
+                                                             responseClass = outputType.Name,
+                                                             nickname = call.InputType().Name,
+                                                             summary = summary,
+
+                                                             //TODO not sure how we'd support error responses
+                                                             errorResponses = new ErrorResponses[0],
+
+                                                             //TODO get notes, nickname, summary from metadata?
+                                                         };
+                                          });
         }
 
-        private IEnumerable<Parameter> getParameters(ActionCall call)
+        private IEnumerable<Parameter> createParameters(ActionCall call)
         {
             if (!call.HasInput) return new Parameter[0];
 
-            var inputType = call.InputType();
-            IEnumerable<PropertyInfo> properties = _typeCache.GetPropertiesFor(inputType).Values;
             var route = call.ParentChain().Route;
 
-            return properties.Select(propertyInfo => createParameterFromProperty(propertyInfo, route));
+            var inputType = call.InputType();
+            IEnumerable<PropertyInfo> properties = _typeCache.GetPropertiesFor(inputType).Values;
+            return properties.Select(propertyInfo => createParameter(propertyInfo, route));
         }
 
-        private static Parameter createParameterFromProperty(PropertyInfo propertyInfo, IRouteDefinition route)
+        public static Parameter createParameter(PropertyInfo propertyInfo, IRouteDefinition route)
         {
             var parameter = new Parameter
                                 {
