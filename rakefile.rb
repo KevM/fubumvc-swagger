@@ -82,8 +82,13 @@ namespace :nuget do
 		}
 	end
 
-	desc "Deploy nuget packages. Expectes you to define your own 'deploy_nuget_packages' task in the buildsupport directory"
-	task :deploy => [:default,"nuget:build",:deploy_nuget_packages]
+	desc "Deploy packages to nuget gallery."
+	task :deploy => [:default,"nuget:build"] do
+		packagesDir = File.absolute_path("results/packages")
+		Dir.glob(File.join(packagesDir,"*.nupkg")){ |file|
+			sh "#{NUGET_EXE} push #{file.gsub(/\//,"\\\\")}"
+		}
+	end
 end 
 
 #desc "Prepares the working directory for a new build"
