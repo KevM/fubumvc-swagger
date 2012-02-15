@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using FubuMVC.Core;
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Urls;
 using FubuMVC.Swagger.Specification;
 
@@ -35,15 +38,16 @@ namespace FubuMVC.Swagger.Actions
             var baseUrl = _urlRegistry.UrlFor(request);
             var absoluteBaseUrl = _currentHttpRequest.ToFullUrl(baseUrl);
 
-            var apis = createSwaggerAPIs(request, baseUrl);
+            var actions = _connegActionActionFinder.ActionsForGroup(request.GroupKey).ToArray();
 
-            //models support should go onto another branch.
-            //var typeSet = new HashSet<Type>();
-            //actions.Each(a =>
-            //                {
-            //                    if(a.HasInput) typeSet.Add(a.InputType());
-            //                    if (a.HasOutput) typeSet.Add(a.OutputType());
-            //                });
+            var apis = createSwaggerAPIs(actions, baseUrl);
+
+            var typeSet = new HashSet<Type>();
+            actions.Each(a =>
+                            {
+                                if(a.HasInput) typeSet.Add(a.InputType());
+                                if (a.HasOutput) typeSet.Add(a.OutputType());
+                            });
 
             return new Resource
                        {
@@ -52,21 +56,18 @@ namespace FubuMVC.Swagger.Actions
                            apiVersion = Assembly.GetExecutingAssembly().GetVersion(),
                            swaggerVersion = "1.0",
                            apis = apis,
-                           //models = typeSet.ToArray()
+                           models = typeSet.ToArray()
                        };
         }
 
-        private API[] createSwaggerAPIs(ResourceRequest request, string baseUrl)
+        private API[] createSwaggerAPIs(IEnumerable<ActionCall> actions, string baseUrl)
         {
-            var actions = _connegActionActionFinder.ActionsForGroup(request.GroupKey).ToArray();
-
             var apis = actions.Select(a =>
                                           {
                                               //UGH we need to make relative URLs for swagger to be happy. 
                                               var pattern = a.ParentChain().Route.Pattern;
                                               var resourceUrl = baseUrl.UrlRelativeTo(pattern);
-                                              var description =
-                                                  a.InputType().GetAttribute<DescriptionAttribute>(d => d.Description);
+                                              var description = a.InputType().GetAttribute<DescriptionAttribute>(d => d.Description);
 
                                               return new API
                                                          {

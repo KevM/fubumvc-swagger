@@ -23,8 +23,6 @@ namespace FubuMVC.Swagger
             return actions;
         }
 
-        //TODO - This should get abstracted out. Everyone will have a different take on their URL structure
-        //this method groups actions by the second segment of the URL. 
         public IEnumerable<IGrouping<string, ActionCall>> ActionsByGroup()
         {
             return _actionGrouper.Group(Actions());

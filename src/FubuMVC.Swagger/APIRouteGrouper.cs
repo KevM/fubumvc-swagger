@@ -11,6 +11,9 @@ namespace FubuMVC.Swagger
         IEnumerable<IGrouping<string, ActionCall>> Group(IEnumerable<ActionCall> actions);
     }
 
+    /// <summary>
+    /// This will group actions by the second segment of the URL /api/{group}/. 
+    /// </summary>
     public class APIRouteGrouper : IActionGrouper
     {
         public IEnumerable<IGrouping<string, ActionCall>> Group(IEnumerable<ActionCall> actions)

@@ -1,3 +1,6 @@
+using System;
+using Newtonsoft.Json;
+
 namespace FubuMVC.Swagger.Specification
 {
     public class ResourceDiscovery
@@ -21,8 +24,9 @@ namespace FubuMVC.Swagger.Specification
         public string swaggerVersion { get; set; }
         public string apiVersion { get; set; }
         public API[] apis { get; set; }
-        
-        //public Type[] models { get; set; }
+
+        [JsonConverter(typeof(ToJsonSchemaConverter))]
+        public Type[] models { get; set; }
     }
 
     public class API
