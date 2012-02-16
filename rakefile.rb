@@ -21,17 +21,24 @@ props = {:archive => "build", :testing => "results"}
 desc "**Default**, compiles and runs unit tests"
 task :default => [:clean,:version,:compile,:test_assemblies,:unit_tests]
 
-desc "Run a sample build using the MSBuildTask"
-msbuild :msbuild, [:clean] do |msb,args|
-	msb.properties :configuration => :Debug
-	msb.targets :Clean, :Build
-	msb.verbosity = "minimal"
-	msb.solution = args[:solution] || SLN_PATH
+desc "Build release version of web site"
+task :build_release do 
+	Rake::Task["compile"].execute(:target => :RELEASE)
 end
 
-task :compile => [:version] do 
+desc "build solution"
+task :compile => [:version] do |t, args|
+	target = args[:target] || :DEBUG
+ 
+	puts "Doing #{target} build" 
+
 	SLN_FILES.each do |f|
-		Rake::Task["msbuild"].execute(:solution => f)
+		msb = MSBuild.new
+		msb.properties :configuration => target
+		msb.targets :Clean, :Build
+		msb.verbosity = "minimal"
+		msb.solution = f
+		msb.execute
 	end
 end
 
@@ -69,7 +76,7 @@ namespace :nuget do
 	end
 
 	desc "Build nuget packages"
-	task :build => [:compile] do 
+	task :build => [:build_release] do 
 		FileUtils.mkdir_p("results/packages")
 		packagesDir = File.absolute_path("results/packages")
 		Dir.glob(File.join("**","*.nuspec")){ |file|
@@ -77,7 +84,7 @@ namespace :nuget do
 			projectPath = File.dirname(file)
 			Dir.chdir(projectPath) do 
 				puts "in project path #{projectPath}"
-				sh "#{NUGET_EXE} pack -OutputDirectory #{packagesDir}"
+				sh "#{NUGET_EXE} pack -OutputDirectory #{packagesDir} -Prop Configuration=Release"
 			end		
 		}
 	end
