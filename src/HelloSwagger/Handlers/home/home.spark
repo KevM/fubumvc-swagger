@@ -8,36 +8,20 @@ h2 {
 </content:head>
 
 <content:pagehead>
-<h1>Welcome <small>to our example</small></h1>
+  <h1>Automatic API documentation</h1>
+  <small>FubuSwagger example web application</small>
 </content:pagehead>
 
-
 <div class="row">
-    <div class="span5">
-    <h2>API Docs</h2>
-      <p>FubuSwagger provides generation of API documentation for your FubuMVC web application with very little work. </p>
-
-      <br/>
-      <div class="alert alert-info">
-        TODO: More copy about usage and tips and tricks
-      </div>
-
+  <div class="span5">
+    <div class="hero-unit">
+      <h2>API Documentation </h2>
+      <p>You build web sites.</p>
+      <p><a class="btn btn-primary" href="${this.Urls.UrlFor<HelloSwagger.Handlers.api.lists.ListsRequest>()}">Simple example web inteface</a></p>
+      <hr/>
+      <p>FubuSwagger makes it easy to generate documentation which informs and enables web developers on how to use your APIs.</p>
+      <p><a class="btn btn-primary btn-large" href="${this.Urls.UrlFor<FubuMVC.Swagger.Actions.SwaggerUIRequest>()}">Example API Documentation</a></p>
     </div>
+  </div>
+  
 </div>
-
-
-<content:footer>
-  <footer class="footer">
-  ▂╱▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂╱▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂▂╱▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂▂▂╱▔▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂▂▂▂╱▔▔▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂▂▂▂▂╱▔▔▔▔▔▔╲▂▂▂▂▂▂▂▂▂<br/>
-  ▂▂▂▂▂▂▂╱▔▔▔▔▔▔▔╲▂▂▂▂▂▂▂<br/>
-  ▂▂▂▂▂▂▂▂╱▔▔▔▔▔▔▔▔╲▂▂▂▂▂<br/>
-  <cite>
-  <a href="https://plus.google.com/117131048957612594416/posts">Matthew Hagget</a>
-  </cite>
-  </footer>
-</content:footer>
