@@ -8,6 +8,9 @@ namespace FubuMVC.Swagger
     {
         public void Configure(BehaviorGraph graph)
         {
+            //add resource discovery action and force it to return JSON
+            graph.AddActionFor("api", typeof(SwaggerUIAction));
+
             ////TODO should this route '/api' be configurable?
             //add resource discovery action and force it to return JSON
             graph.AddActionFor("api/resources.json", typeof(ResourceDiscoveryAction)).MakeAsymmetricJson();

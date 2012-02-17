@@ -5,7 +5,7 @@
 [Oo]bj/
 CommonAssemblyInfo.cs
 *.csproj.user
-src/Bootstrap.sln.DotSettings.user
+src/FubuMVC.Swagger.csproj.DotSettings.user
 *.user
 *.suo
 *.sln.cache
@@ -25,4 +25,3 @@ src/packages
 src/Web/fubu-content/*
 libs/DovetailSDK/*.dll
 !repositories.config
-!src/Web/bootstrap.log4net
