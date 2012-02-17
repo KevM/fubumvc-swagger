@@ -19,7 +19,7 @@ buildsupportfiles.each { |ext|
 props = {:archive => "build", :testing => "results"}
 
 desc "**Default**, compiles and runs unit tests"
-task :default => [:clean,:version,:compile,:test_assemblies,:unit_tests]
+task :default => [:clean,:version,:compile,:checkout_common_assembly_info, :test_assemblies,:unit_tests]
 
 desc "Build release version of web site"
 task :build_release do 
@@ -130,4 +130,8 @@ assemblyinfo :version do |asm|
 	asm.file_version = build_number
 	asm.custom_attributes :AssemblyInformationalVersion => build_number
 	asm.output_file = 'src/CommonAssemblyInfo.cs'
+end
+
+task :checkout_common_assembly_info do
+	`git checkout -- src/CommonAssemblyInfo.cs`
 end
