@@ -126,10 +126,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Handlers\api\lists\lists.spark" />
-    <None Include="Handlers\api\lists\show\show.spark" />
-    <None Include="Handlers\home\home.spark" />
-    <None Include="Shared\Application.spark" />
+    <Content Include="Handlers\api\lists\lists.spark" />
+    <Content Include="Handlers\api\lists\show\show.spark" />
+    <Content Include="Handlers\home\home.spark" />
+    <Content Include="Shared\Application.spark" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fubu-content\" />
