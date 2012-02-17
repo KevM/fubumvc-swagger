@@ -1,8 +1,12 @@
 FubuMVC Swagger
 ===============
 
-This project allows your content negotiation enabled [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application
-to emit [Swagger specification](http://swagger.wordnik.com/spec)
+This project helps your [FubuMVC](https://github.com/DarthFubuMVC/fubumvc) web application
+ generate API documentation via [Swagger](http://swagger.wordnik.com/).
+ 
+[![swagger demo](https://github.com/KevM/fubumvc-swagger/raw/gh-pages/images/hellofubuswagger.png)](http://fubuswagger.apphb.com/)
+
+See our [Hello Swagger](http://fubuswagger.apphb.com/) live demo.
 
 ### How do I get it? ###
 
@@ -19,7 +23,13 @@ gem install albacore
 rake
 ```
 
-### Integration
+### How do I put this in my peanut butter?
+
+**Note:** This should all be simplified when I find the time to figure out Fubu Bottles. 
+
+Your API documented should support content negitiation and be grouped under the route **/api**. Take a look at the [HelloSwagger](https://github.com/KevM/fubumvc-swagger/tree/master/src/HelloSwagger) for examples. 
+
+#### Checklist
 
 Add a reference to this project. Why not [use nuget](https://nuget.org/packages/FubuMVC.Swagger)!
 
@@ -30,22 +40,30 @@ ApplyConvention<SwaggerConvention>();
 Services(s=> s.AddService<IActionGrouper, APIRouteGrouper>());
 ```
 
-This should all be simplified when I find the time to figure out Fubu Bottles. 
+Copy the swagger-ui directory into your **/content** direcotry.
+
+Launch your web app and take a look at the **/api** to see if it is working.
 
 ### What does this convention do?
 
-Two routes will be added to your application:
+Three routes will be added to your application:
 
 ```html
-api/resources.json
-api/{GroupKey}.json
+GET /api
 ```
+This route serves up the Swagger-UI page currently embedded into FubuSwagger. _This part needs work._
 
-The first is for resource discovery which let's Swagger-UI know where all of your resource APIs are defined in JSON. 
-The second is for details of each API group present in your app. Currently API routes are assumed to be under /api. 
-Hopefully this limitation will go away.
+```html
+GET /api/resources.json
+```
+Swagger UI does some resource discovery and uses the output of this route to find all of the API groups in your project. 
 
-Pointing a Swagger UI web site at ```http://localhost:port/api/``` should render pretty API documentation for all content negotiation enabled actions in your web applicaiton.
+```html
+GET /api/{GroupKey}.json
+```
+Details of each API group present in your app. 
+
+Pointing a Swagger UI web site at ```http://localhost:port/api/``` should render pretty API documentation for your web application.
 
 ### Why do I not see documentation for my actions?
 
@@ -60,6 +78,8 @@ graph.Behaviors
 ```
 
 This example will force the result of these actions to be JSON. Note: This configuration is working around a bug in FubuMVC where normal browser usage will return XML for Conneg enabled endpoints. :( 
+
+Better yet take a look at the [HelloSwagger](https://github.com/KevM/fubumvc-swagger/tree/master/src/HelloSwagger) demo application and see how it is wired up and organized.
 
 ### How do I add more detail to my APIs
 
