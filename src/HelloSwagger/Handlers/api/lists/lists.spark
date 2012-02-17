@@ -1,0 +1,20 @@
+﻿<viewdata model="HelloSwagger.Handlers.api.lists.ListsModel" />
+<content:head>
+<style type="text/css">
+    .lists li 
+    {
+        list-style-type: none;
+        margin: 7px 2px;
+    }
+</style>
+</content:head>
+<content:pagehead>
+<h1>List <small>a handy listing of lists</small></h1>
+</content:pagehead>
+
+<ul class=".lists">
+  <li each='var list in Model.Lists'>
+    <a href="${this.Urls.UrlFor(new HelloSwagger.Handlers.api.lists.show.ShowRequest() {Name = list})}">${list}</a>
+  </li>  
+</ul>
+

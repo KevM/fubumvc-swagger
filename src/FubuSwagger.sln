@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4C500A
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSwagger", "HelloSwagger\HelloSwagger.csproj", "{AFC9EE91-381F-4832-9EFB-8795D6A8440F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{41F1236E-8E1E-4314-831E-3335E491DCE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41F1236E-8E1E-4314-831E-3335E491DCE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41F1236E-8E1E-4314-831E-3335E491DCE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC9EE91-381F-4832-9EFB-8795D6A8440F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC9EE91-381F-4832-9EFB-8795D6A8440F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC9EE91-381F-4832-9EFB-8795D6A8440F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC9EE91-381F-4832-9EFB-8795D6A8440F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

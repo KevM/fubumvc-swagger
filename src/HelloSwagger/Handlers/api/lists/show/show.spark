@@ -1,0 +1,14 @@
+﻿<use namespace="HelloSwagger.Handlers.api.lists.show" />
+<viewdata model="HelloSwagger.Handlers.api.lists.show.ShowModel" />
+
+<content:pagehead>
+<h1>${Model.Name} <small>list</small></h1>
+</content:pagehead>
+
+<ul>
+  <li each='var element in Model.Elements'>
+    <div>${element.Title}
+      <span class="label" if='element.IsDefault'>Default <i class="icon-flag icon-white"></i></span>
+    </div>
+  </li>  
+</ul>

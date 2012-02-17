@@ -1,0 +1,17 @@
+.content {
+    font-family: 'Open Sans', sans-serif;
+}
+
+dl.listing dd {
+    margin: 5px 0 10px 20px;
+}
+
+dl.listing dt a {
+    margin-right: 3px;
+}
+
+.footer {
+  margin-top: 45px;
+  padding: 35px 0 36px;
+  border-top: 1px solid #e5e5e5;
+}

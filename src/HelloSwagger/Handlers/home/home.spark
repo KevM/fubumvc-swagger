@@ -1,0 +1,43 @@
+﻿<viewdata model="HelloSwagger.Handlers.home.HomeModel" />
+<content:head>
+<style type="text/css">
+h2 {
+  margin-bottom: 20px; 
+}
+</style>
+</content:head>
+
+<content:pagehead>
+<h1>Welcome <small>to our example</small></h1>
+</content:pagehead>
+
+
+<div class="row">
+    <div class="span5">
+    <h2>API Docs</h2>
+      <p>FubuSwagger provides generation of API documentation for your FubuMVC web application with very little work. </p>
+
+      <br/>
+      <div class="alert alert-info">
+        TODO: More copy about usage and tips and tricks
+      </div>
+
+    </div>
+</div>
+
+
+<content:footer>
+  <footer class="footer">
+  ▂╱▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂╱▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂▂╱▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂▂▂╱▔▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂▂▂▂╱▔▔▔▔▔╲▂▂▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂▂▂▂▂╱▔▔▔▔▔▔╲▂▂▂▂▂▂▂▂▂<br/>
+  ▂▂▂▂▂▂▂╱▔▔▔▔▔▔▔╲▂▂▂▂▂▂▂<br/>
+  ▂▂▂▂▂▂▂▂╱▔▔▔▔▔▔▔▔╲▂▂▂▂▂<br/>
+  <cite>
+  <a href="https://plus.google.com/117131048957612594416/posts">Matthew Hagget</a>
+  </cite>
+  </footer>
+</content:footer>
