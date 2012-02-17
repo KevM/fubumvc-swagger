@@ -3,7 +3,7 @@
 # ===================
 [Bb]in/
 [Oo]bj/
-CommonAssemblyInfo.cs
+#CommonAssemblyInfo.cs
 *.csproj.user
 src/FubuMVC.Swagger.csproj.DotSettings.user
 *.user
