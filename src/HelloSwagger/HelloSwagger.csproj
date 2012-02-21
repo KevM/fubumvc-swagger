@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="content\img\glyphicons-halflings-white.png" />
     <Content Include="content\img\glyphicons-halflings.png" />
+    <Content Include="content\scripts\bootstrap-collapse.js" />
     <Content Include="content\scripts\bootstrap-dropdown.js" />
     <Content Include="content\scripts\site.js" />
     <Content Include="content\styles\bootstrap-responsive.min.css" />
