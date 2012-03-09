@@ -129,7 +129,9 @@
   <ItemGroup>
     <Content Include="Handlers\api\lists\lists.spark" />
     <Content Include="Handlers\api\lists\show\show.spark" />
-    <Content Include="Handlers\home\home.spark" />
+    <Content Include="Handlers\home\home.spark">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Shared\Application.spark" />
   </ItemGroup>
   <ItemGroup>
