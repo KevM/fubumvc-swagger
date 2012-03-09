@@ -1,11 +1,10 @@
-using System.Web.Routing;
 using Bottles;
 using FubuMVC.Core;
 using FubuMVC.StructureMap;
 using StructureMap;
 
 // You can remove the reference to WebActivator by calling the Start() method from your Global.asax Application_Start
-[assembly: WebActivator.PreApplicationStartMethod(typeof(HelloSwagger.App_Start.AppStartFubuMVC), "Start", callAfterGlobalAppStart: true)]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(HelloSwagger.App_Start.AppStartFubuMVC), "Start")]
 
 namespace HelloSwagger.App_Start
 {

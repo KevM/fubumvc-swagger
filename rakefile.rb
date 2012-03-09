@@ -2,12 +2,13 @@ require 'albacore'
 include REXML
 include Rake::DSL
 
-BUILD_NUMBER_BASE = "0.1.0"
+BUILD_NUMBER_BASE = "0.2.2"
 PROJECT_NAME = "FubuSwagger"
 SLN_PATH = "src/#{PROJECT_NAME}.sln"
 SLN_FILES = [SLN_PATH]
 
 NUGET_EXE = File.absolute_path("src/.nuget/nuget.exe")
+target = :DEBUG;
 
 puts "Loading scripts from build support directory..."
 buildsupportfiles = Dir["#{File.dirname(__FILE__)}/buildsupport/*.rb"]
@@ -23,12 +24,12 @@ task :default => [:clean,:version,:compile,:checkout_common_assembly_info, :test
 
 desc "Build release version of web site"
 task :build_release do 
-	Rake::Task["compile"].execute(:target => :RELEASE)
+	target = :RELEASE
+	Rake::Task["compile"].invoke
 end
 
 desc "build solution"
-task :compile => [:version] do |t, args|
-	target = args[:target] || :DEBUG
+task :compile => [:version] do
  
 	puts "Doing #{target} build" 
 
@@ -90,7 +91,7 @@ namespace :nuget do
 	end
 
 	desc "Deploy packages to nuget gallery."
-	task :deploy => [:default,"nuget:build"] do
+	task :deploy => ["nuget:build"] do
 		packagesDir = File.absolute_path("results/packages")
 		Dir.glob(File.join(packagesDir,"*.nupkg")){ |file|
 			sh "#{NUGET_EXE} push #{file.gsub(/\//,"\\\\")}"
