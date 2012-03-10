@@ -102,7 +102,7 @@
     <Content Include="content\styles\bootstrap.min.css" />
     <Content Include="content\scripts\bootstrap.min.js" />
     <Content Include="content\styles\site.css" />
-    <EmbeddedResource Include="content\swagger-ui\index.html" />
+    <Content Include="content\swagger-ui\index.html" />
     <Content Include="content\swagger-ui\javascripts\app.js" />
     <Content Include="content\swagger-ui\javascripts\swagger-service.js" />
     <Content Include="content\swagger-ui\javascripts\swagger-ui.js" />
