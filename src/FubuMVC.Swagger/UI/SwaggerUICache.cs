@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -43,8 +44,30 @@ namespace FubuMVC.Swagger.UI
             var url = _currentRequest.RawUrl();
             var swaggerUIUrl = url.Replace("/api", "/content/swagger-ui");
             content = _resourceExpression.Replace(content, "'" + swaggerUIUrl + "/${kind}/");
-            var result = _baseUrlExpression.Replace(content, "${baseId} value=\"" + _currentRequest.FullUrl() + "\"");
+            var result = _baseUrlExpression.Replace(content, "${baseId} value=\"" + ToPublicUrl(url) + "\"");
             return result;
         }
+
+        public string ToPublicUrl(string relativeUri)
+        {
+            var httpContext = HttpContext.Current;
+
+            var uriBuilder = new UriBuilder
+            {
+                Host = httpContext.Request.Url.Host,
+                Path = "/",
+                Port = 80,
+                Scheme = "http",
+            };
+
+            if (httpContext.Request.IsLocal)
+            {
+                uriBuilder.Port = httpContext.Request.Url.Port;
+            }
+
+            return new Uri(uriBuilder.Uri, relativeUri).AbsoluteUri;
+        }
+
+
     }
 }
