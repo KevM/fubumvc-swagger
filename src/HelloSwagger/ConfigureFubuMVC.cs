@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
@@ -5,7 +6,7 @@ using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Resources.Conneg;
 using FubuMVC.Spark;
-using FubuMVC.Swagger;
+using FubuMVC.Swagger.Configuration;
 using HelloSwagger.Handlers;
 using HelloSwagger.Handlers.home;
 
@@ -39,14 +40,7 @@ namespace HelloSwagger
 
             ApplyConvention<ApiConvention>();
 
-            //TODO replace this with Swagger Bottle
-            ApplyConvention<SwaggerConvention>();
-
-            Services(s =>
-            {
-                //TODO replace this with Swagger Bottle
-                s.AddService<IActionGrouper, APIRouteGrouper>();
-            });
+            Import<SwaggerApiDocumentationExtension>();
         }
     }
 }

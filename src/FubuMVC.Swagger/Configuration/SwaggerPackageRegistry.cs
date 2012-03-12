@@ -2,7 +2,6 @@ using FubuMVC.Core;
 
 namespace FubuMVC.Swagger.Configuration
 {
-
     public class SwaggerPackageRegistry : FubuPackageRegistry
     {
         public SwaggerPackageRegistry()

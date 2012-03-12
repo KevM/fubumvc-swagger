@@ -83,6 +83,7 @@
     <Compile Include="Configuration\SwaggerPackageRegistry.cs" />
     <Compile Include="Actions\ResourceDiscoveryAction.cs" />
     <Compile Include="Actions\ResourceAction.cs" />
+    <Compile Include="Configuration\SwaggerApiDocumentationExtension.cs" />
     <Compile Include="UI\CacheIt.cs" />
     <Compile Include="UI\SwaggerUICache.cs" />
     <Compile Include="UI\SwaggerUIIndex.cs" />
