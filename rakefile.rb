@@ -2,7 +2,7 @@ require 'albacore'
 include REXML
 include Rake::DSL
 
-BUILD_NUMBER_BASE = "0.2.2"
+BUILD_NUMBER_BASE = "0.3.0"
 PROJECT_NAME = "FubuSwagger"
 SLN_PATH = "src/#{PROJECT_NAME}.sln"
 SLN_FILES = [SLN_PATH]
