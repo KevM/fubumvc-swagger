@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Resources.Conneg;
-using FubuMVC.Spark;
 using FubuMVC.Swagger.Configuration;
 using HelloSwagger.Handlers;
 using HelloSwagger.Handlers.home;
+using IApi = FubuMVC.Swagger.Configuration.IApi;
 
 namespace HelloSwagger
 {
@@ -26,21 +25,12 @@ namespace HelloSwagger
     {
         public ConfigureFubuMVC()
         {
-            IncludeDiagnostics(true);
-
-            ApplyHandlerConventions<HandlerMarker>();
-
-            this.UseSpark();
-
-            // Match views to action methods by matching
-            // on model type, view name, and namespace
-            Views.TryToAttachWithDefaultConventions();
-
             Routes.HomeIs<HomeRequest>();
 
-            ApplyConvention<ApiConvention>();
+            Policies.Add<ApiConvention>();
 
             Import<SwaggerApiDocumentationExtension>();
+			Import<HandlerConvention>(x => x.MarkerType<HandlerMarker>());
         }
     }
 }

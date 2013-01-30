@@ -6,8 +6,9 @@ namespace FubuMVC.Swagger.Configuration
     {
         public void Configure(FubuRegistry registry)
         {
-            registry.ApplyConvention<SwaggerConvention>();
+            registry.Policies.Add<SwaggerConvention>();
             registry.Services(s=>s.AddService<IActionGrouper, APIRouteGrouper>());
+			registry.Services(s => s.AddService<IActionFinder, APIRouteFinder>());
         }
     }
 }

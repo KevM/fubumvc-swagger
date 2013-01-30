@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
-using FubuMVC.Core.Resources.Conneg;
 
 namespace FubuMVC.Swagger
 {
@@ -10,16 +10,18 @@ namespace FubuMVC.Swagger
     {
         private readonly BehaviorGraph _graph;
         private readonly IActionGrouper _actionGrouper;
+	    private readonly IActionFinder _actionFinder;
 
-        public ConnegActionFinder(BehaviorGraph graph, IActionGrouper actionGrouper)
+	    public ConnegActionFinder(BehaviorGraph graph, IActionGrouper actionGrouper, IActionFinder actionFinder)
         {
             _graph = graph;
             _actionGrouper = actionGrouper;
+	        _actionFinder = actionFinder;
         }
 
         public IEnumerable<ActionCall> Actions()
         {
-            var actions = _graph.Actions().Where(a => a.ParentChain().HasConnegOutput()).ToArray();
+            var actions = _graph.Actions().Where(_actionFinder.Matches).ToArray();
             return actions;
         }
 
@@ -37,4 +39,9 @@ namespace FubuMVC.Swagger
             return @group ?? (IEnumerable<ActionCall>) new ActionCall[0];
         }
     }
+
+	public interface IActionFinder	
+	{
+		Func<ActionCall, bool> Matches { get; }
+	}
 }

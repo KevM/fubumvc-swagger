@@ -25,3 +25,4 @@ src/packages
 src/Web/fubu-content/*
 libs/DovetailSDK/*.dll
 !repositories.config
+source/HelloSwagger/fubu-content/

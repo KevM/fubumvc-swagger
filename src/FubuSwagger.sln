@@ -1,10 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Swagger", "FubuMVC.Swagger\FubuMVC.Swagger.csproj", "{A951ABAE-5AC0-4D10-9C8B-0911DEB75BD4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Swagger.Tests", "FubuMVC.Swagger.Tests\FubuMVC.Swagger.Tests.csproj", "{41F1236E-8E1E-4314-831E-3335E491DCE6}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{30FE57E5-2BEE-4B1A-99E8-3420394551E2}"
 	ProjectSection(SolutionItems) = preProject
 		..\rakefile.rb = ..\rakefile.rb
@@ -16,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4C500A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Swagger", "FubuMVC.Swagger\FubuMVC.Swagger.csproj", "{A951ABAE-5AC0-4D10-9C8B-0911DEB75BD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Swagger.Tests", "FubuMVC.Swagger.Tests\FubuMVC.Swagger.Tests.csproj", "{41F1236E-8E1E-4314-831E-3335E491DCE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSwagger", "HelloSwagger\HelloSwagger.csproj", "{AFC9EE91-381F-4832-9EFB-8795D6A8440F}"
 EndProject

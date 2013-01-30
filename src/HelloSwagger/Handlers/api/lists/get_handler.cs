@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using FubuMVC.Swagger.Configuration;
 using HelloSwagger.Handlers.api.lists.show;
 
 namespace HelloSwagger.Handlers.api.lists

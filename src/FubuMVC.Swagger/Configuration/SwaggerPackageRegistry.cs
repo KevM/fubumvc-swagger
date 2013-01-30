@@ -6,9 +6,10 @@ namespace FubuMVC.Swagger.Configuration
     {
         public SwaggerPackageRegistry()
         {
-            ApplyConvention<SwaggerConvention>();
+			Policies.Add<SwaggerConvention>();
         
             Services(s => s.AddService<IActionGrouper, APIRouteGrouper>());
+			Services(s => s.AddService<IActionFinder, APIRouteFinder>());
         }
     }
 }
