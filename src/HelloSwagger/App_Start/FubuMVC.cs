@@ -1,10 +1,11 @@
 using Bottles;
 using FubuMVC.Core;
-using FubuMVC.StructureMap;
-using StructureMap;
 
 // You can remove the reference to WebActivator by calling the Start() method from your Global.asax Application_Start
-[assembly: WebActivator.PreApplicationStartMethod(typeof(HelloSwagger.App_Start.AppStartFubuMVC), "Start")]
+using FubuMVC.StructureMap3;
+using StructureMap;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(HelloSwagger.App_Start.AppStartFubuMVC), "Start")]
 
 namespace HelloSwagger.App_Start
 {
@@ -25,8 +26,8 @@ namespace HelloSwagger.App_Start
                 // but FubuMVC just adds configuration to an IoC container so
                 // that you can use the native registration API's for your
                 // IoC container for the rest of your application
-                .StructureMap(new Container())
-                .Bootstrap();
+				.StructureMap(new Container())
+				.Bootstrap();
 
 			// Ensure that no errors occurred during bootstrapping
 			PackageRegistry.AssertNoFailures();
