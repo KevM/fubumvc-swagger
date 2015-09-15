@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HelloSwagger</RootNamespace>
     <AssemblyName>HelloSwagger</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\src\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -26,6 +26,7 @@
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,95 +45,58 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bottles, Version=1.0.0.441, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Bottles, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Bottles.1.0.0.441\lib\Bottles.dll</HintPath>
+      <HintPath>..\packages\Bottles.2.0.0.576\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="FubuCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FubuCore, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuCore.1.0.0.225\lib\FubuCore.dll</HintPath>
+      <HintPath>..\packages\FubuCore.1.3.0.278\lib\FubuCore.dll</HintPath>
     </Reference>
-    <Reference Include="FubuLocalization, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FubuMVC.Core, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuLocalization.0.9.5.124\lib\FubuLocalization.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.Core.1.3.0.1710\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core, Version=1.0.0.1402, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="FubuMVC.StructureMap3, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuMVC.Core.1.0.0.1402\lib\net40\FubuMVC.Core.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.StructureMap3.3.0.0.108\lib\net40\FubuMVC.StructureMap3.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core.Assets">
-      <HintPath>..\packages\FubuMVC.Core.Assets.0.9.9.203\lib\net40\FubuMVC.Core.Assets.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Core.UI">
-      <HintPath>..\packages\FubuMVC.Core.UI.1.0.0.224\lib\net40\FubuMVC.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Core.View">
-      <HintPath>..\packages\FubuMVC.Core.View.1.0.0.145\lib\net40\FubuMVC.Core.View.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Diagnostics">
-      <HintPath>..\packages\FubuMVC.Diagnostics.0.9.6.210\lib\net40\FubuMVC.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.JQueryUI">
-      <HintPath>..\packages\FubuMVC.JQueryUI.0.5.0.219\lib\net40\FubuMVC.JQueryUI.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Media">
-      <HintPath>..\packages\FubuMVC.Media.0.9.5.309\lib\net40\FubuMVC.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Navigation">
-      <HintPath>..\packages\FubuMVC.Navigation.0.9.0.82\lib\net40\FubuMVC.Navigation.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.SlickGrid">
-      <HintPath>..\packages\FubuMVC.SlickGrid.0.0.0.252\lib\net40\FubuMVC.SlickGrid.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Spark, Version=1.0.0.145, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuMVC.Spark.1.0.0.145\lib\net40\FubuMVC.Spark.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.StructureMap, Version=1.0.0.1401, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuMVC.StructureMap.1.0.0.1401\lib\net40\FubuMVC.StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.TwitterBootstrap">
-      <HintPath>..\packages\FubuMVC.TwitterBootstrap.0.0.0.253\lib\net40\FubuMVC.TwitterBootstrap.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlTags, Version=1.2.0.145, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HtmlTags.1.2.0.145\lib\4.0\HtmlTags.dll</HintPath>
+    <Reference Include="HtmlTags">
+      <HintPath>..\packages\HtmlTags.2.1.0.183\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Spark, Version=1.7.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Spark.1.7.5.1\lib\NET40\Spark.dll</HintPath>
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.AutoMocking, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.automocking.3.1.6.186\lib\net40\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Swagger\FubuMVC.Swagger.csproj">
-      <Project>{A951ABAE-5AC0-4D10-9C8B-0911DEB75BD4}</Project>
+      <Project>{a951abae-5ac0-4d10-9c8b-0911deb75bd4}</Project>
       <Name>FubuMVC.Swagger</Name>
     </ProjectReference>
   </ItemGroup>
