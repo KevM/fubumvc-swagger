@@ -2,7 +2,7 @@ require 'albacore'
 include REXML
 include Rake::DSL
 
-BUILD_NUMBER_BASE = "0.3.0"
+BUILD_NUMBER_BASE = "0.4.0"
 PROJECT_NAME = "FubuSwagger"
 SLN_PATH = "src/#{PROJECT_NAME}.sln"
 SLN_FILES = [SLN_PATH]
@@ -12,9 +12,9 @@ target = :DEBUG;
 
 puts "Loading scripts from build support directory..."
 buildsupportfiles = Dir["#{File.dirname(__FILE__)}/buildsupport/*.rb"]
-buildsupportfiles.each { |ext| 
-	puts "loading #{ext}" 
-	load ext 
+buildsupportfiles.each { |ext|
+	puts "loading #{ext}"
+	load ext
 }
 
 props = {:archive => "build", :testing => "results"}
@@ -23,15 +23,15 @@ desc "**Default**, compiles and runs unit tests"
 task :default => [:clean,:version,:compile,:checkout_common_assembly_info, :test_assemblies,:unit_tests]
 
 desc "Build release version of web site"
-task :build_release do 
+task :build_release do
 	target = :RELEASE
 	Rake::Task["compile"].invoke
 end
 
 desc "build solution"
 task :compile => [:version] do
- 
-	puts "Doing #{target} build" 
+
+	puts "Doing #{target} build"
 
 	SLN_FILES.each do |f|
 		msb = MSBuild.new
@@ -49,11 +49,11 @@ output :test_assemblies => [:compile] do |out|
 	out.to "#{props[:testing]}"
 	Dir.glob("**/bin/Debug*/*.*"){ |file|
 		out.file file, :as => "assemblies/#{File.basename(file)}"
-	}	
+	}
 end
 
 desc "Run unit tests for any dlls that end with 'tests'"
-nunit :unit_tests do |nunit|	
+nunit :unit_tests do |nunit|
 	nunit.command = findNunitConsoleExe()
 	nunit.assemblies = Dir.glob("results/assemblies/*{T,t}ests.dll").uniq
 	nunit.options '/xml=results/unit-test-results.xml'
@@ -62,14 +62,14 @@ end
 def findNunitConsoleExe
 	nunitPackageDirectory = Dir.glob('src/packages/NUnit*').first
 	raise "NUnit package was not found under src/packages." if nunitPackageDirectory.nil?
-	
+
 	return File.join(nunitPackageDirectory, 'tools/nunit-console.exe')
 end
 
 namespace :nuget do
 
 	desc "Run nuget update on all the projects"
-	task :update => [:clean] do 
+	task :update => [:clean] do
 		Dir.glob(File.join("**","packages.config")){ |file|
 			puts "Updating packages for #{file}"
 			sh "#{NUGET_EXE} update #{file} -RepositoryPath src/packages"
@@ -77,16 +77,16 @@ namespace :nuget do
 	end
 
 	desc "Build nuget packages"
-	task :build => [:build_release] do 
+	task :build => [:build_release] do
 		FileUtils.mkdir_p("results/packages")
 		packagesDir = File.absolute_path("results/packages")
 		Dir.glob(File.join("**","*.nuspec")){ |file|
 			puts "Building nuget package for #{file}"
 			projectPath = File.dirname(file)
-			Dir.chdir(projectPath) do 
+			Dir.chdir(projectPath) do
 				puts "in project path #{projectPath}"
 				sh "#{NUGET_EXE} pack -OutputDirectory #{packagesDir} -Prop Configuration=Release"
-			end		
+			end
 		}
 	end
 
@@ -97,14 +97,14 @@ namespace :nuget do
 			sh "#{NUGET_EXE} push #{file.gsub(/\//,"\\\\")}"
 		}
 	end
-end 
+end
 
 #desc "Prepares the working directory for a new build"
-task :clean do	
+task :clean do
 
 	props.each do |key,val|
 		FileUtils.rm_r(Dir.glob("#{val}/*"), :force => true) if File.exists?val
-		FileUtils.rmdir(val) if File.exists?val  
+		FileUtils.rmdir(val) if File.exists?val
 	end
 	# Clean up all bin folders in the source folder
 	FileUtils.rm_rf(Dir.glob("**/{obj,bin}"))
