@@ -6,21 +6,19 @@ using System.Linq;
 using System.Xml;
 using NUnit.Framework;
 using StructureMap.AutoMocking;
-using StructureMap.AutoMocking.Moq;
 
 namespace FubuMVC.Swagger.Tests
 {
     [TestFixture]
     public abstract class Context<T> where T : class
     {
-        public AutoMocker<T> _services { get; private set; }
+		public RhinoAutoMocker<T> _services { get; private set; }
         public T _cut { get; private set; }
 
         [SetUp]
         public void Setup()
         {
-	        var moqServiceLocator = new MoqServiceLocator();
-			_services = new AutoMocker<T>(moqServiceLocator);
+			_services = new RhinoAutoMocker<T>(MockMode.AAA);
 
             OverrideMocks();
 
